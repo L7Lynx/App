@@ -25,13 +25,14 @@
                 </tr>
             </tbody>
         </table>
-        <input id ="matchevent" value="MatchEvent">
-        <button id="button">Zoek!</button>
 
         <div id="testdiv"> This div should be replaced by actual content.</div>
         <script type="text/javascript">
-            $('#button').on('click', function () {
-                var event = $('#matchevent').val();
+
+            $(document).ready(function()
+            {
+                 alert("hey");
+                var event = 1;
 
                 var url = 'http://mobapptest.eu5.org/players.php';
                 $.post(url, { id: event }, function (data) {

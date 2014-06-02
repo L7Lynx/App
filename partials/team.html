@@ -50,7 +50,7 @@
         <div>
             <h3>Playerlist</h3>
             <div id="playerlist">
-                <div class="playerinfo">
+                <!--<div class="playerinfo">
                     <label>Player: </label> Robin <br/>
                     <label>Height: </label> 183 cm <br/>
                     <label>Birthday: </label> 24/09/1992 <br/>
@@ -64,7 +64,8 @@
                     <label>Player: </label>  Robin3<br/>
                     <label>Height: </label> 192 cm <br/>
                     <label>Birthday: </label> 24/09/1992 <br/>
-                </div>
+                </div>-->
+                <div></div>
             </div>
         </div>
         <div class="whitespace"></div>
@@ -72,6 +73,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(document).ready(function()
     {
         var event = 1;
@@ -84,8 +86,25 @@
                 })
             },
             'json'
-        )
-    });
+        );
+
+        url = 'http://mobapptest.eu5.org/players.php';
+        $.post(url, { teamid: event }, function (data) {
+                    var count = 0;
+
+                    $.each(data, function (arrayID, group) {
+                        $('#playerlist div:last').after('<div class="playerinfo">' +
+                                '<label>Player: </label> ' + group.name + '<br/>' +
+                                '<label>Height: </label> ' + group.height + '<br/>' +
+                                '<label>Birthday: </label> ' + group.birthdate + '</div>');
+                        count++;
+                    });
+                    $('#teamPlayers').text(count);
+                },
+                'json'
+        );
+
+    })
 
 </script>
 
