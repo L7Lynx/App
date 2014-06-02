@@ -1,0 +1,64 @@
+<html>
+<head>
+    <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
+    <title>Subscription</title>
+</head>
+
+<body>
+<div id="my720pxcontainer">
+    <br/>
+    <header>
+        <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
+        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <h2>Subscription</h2>
+    </header>
+
+    <main>
+        <p>Select the matches you want to watch.</p>
+        <hr/>
+        <table class="table table-hover">
+            <thead>
+            <td>#</td>
+            <td>Date</td>
+            <td>Hometeam</td>
+            <td>Awayteam</td>
+            <td>Watch</td>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>03/08/2014</td>
+                <td>Robin</td>
+                <td>Karel</td>
+                <td><a href="matchevent.html">watch</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>22/08/2014</td>
+                <td>Robin</td>
+                <td>Joeri</td>
+                <td><a href="matchevent.html">watch</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>13/09/2014</td>
+                <td>Karel</td>
+                <td>Joeri</td>
+                <td><a href="matchevent.html">watch</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+
+<script type="text/javascript">
+    function buttonBack()
+    {
+        window.location = 'home.html';
+    }
+</script>
+</body>
+
+</html>
