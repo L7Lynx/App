@@ -1,6 +1,7 @@
 <html>
 <head>
     <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-1.9.1.js"></script>
     <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
     <title>Team</title>
 </head>
@@ -21,29 +22,40 @@
             <thead>
             <td>#</td>
             <td>Team</td>
+            <td>Country</td>
+            <td>Competition</td>
+            <td></td>
             </thead>
 
-            <tbody>
+            <tbody id="tbody">
             <tr>
-                <td>1</td>
-                <td>Robin</td>
-                <td><a href="team.html">view</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Karel</td>
-                <td><a href="team.html">view</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Joeri</td>
-                <td><a href="team.html">view</a></td>
             </tr>
             </tbody>
         </table>
     </main>
 </div>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var url = 'http://mobapptest.eu5.org/teams.php';
+        $.post(url, function (data) {
+                var count = 1;
+                $.each(data, function (arrayID, group) {
+                    $('#tbody tr:last').after('<tr><td>' +
+                        count + '</td><td>' +
+                        group.team + '</td><td>' +
+                        group.country + '</td><td>' +
+                        group.competition + '</td><td>' +
+                        '<a href="team.html">view</td></tr>');
+                })
+                count++;
+            },
+            'json'
+        )
 
+        $('#matchevent').val("");
+    });
+</script>
 <script type="text/javascript">
     function buttonBack()
     {

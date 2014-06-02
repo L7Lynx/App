@@ -74,7 +74,6 @@
 <script type="text/javascript">
     $(document).ready(function()
     {
-        alert("test");
         var event = 1;
         var url = 'http://mobapptest.eu5.org/teams.php';
         $.post(url, { id: event }, function (data) {
@@ -88,27 +87,6 @@
         )
     });
 
-    $('#button').on('click', function () {
-        var event = $('#matchevent').val();
-
-        var url = 'http://mobapptest.eu5.org/matchEvents.php';
-        $.post(url, { matchid: event }, function (data) {
-                    var count = 1;
-                    $.each(data, function (arrayID, group) {
-                        $('#tbody tr:last').after('<tr><td>' +
-                                count + '</td><td>' +
-                                group.team + '</td><td>' +
-                                group.player + '</td><td>' +
-                                group.event + '</td><td>' +
-                                'min ' + group.time + '</td></tr>');
-                    })
-                    count++;
-                },
-                'json'
-        )
-
-        $('#matchevent').val("");
-    })
 </script>
 
 <script type="text/javascript">
