@@ -9,13 +9,26 @@
 <div id="my720pxcontainer">
     <br/>
     <header>
+        <div class="backbutton"><a href="../index.html"> <button class="btn btn-default" id="homebackbtn" >Log Out</button></a></div>
         <h2>Home</h2>
     </header>
 
     <main>
-       <button type="submit" class="btn btn-default btn-lg btn-block">Match</button>
-       <button type="submit" class="btn btn-default btn-lg btn-block">Team</button>
+       <button class="btn btn-default btn-lg btn-block" onclick="buttonMatchEvents();">Match</button>
+       <button type="submit" class="btn btn-default btn-lg btn-block" onclick="buttonTeam();">Team</button>
     </main>
+    </div>
+
+<script type="text/javascript">
+    function buttonMatchEvents()
+    {
+        window.location = 'MatchEvent.html';
+    }
+    function buttonTeam()
+    {
+        window.location = 'team.html';
+    }
+</script>
 </body>
 
 </html>

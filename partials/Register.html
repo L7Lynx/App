@@ -9,6 +9,7 @@
 <div id="my720pxcontainer">
     <br/>
     <header>
+        <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
         <h2>Register</h2>
     </header>
 
@@ -28,10 +29,21 @@
                 <label for="memberSinceTextbox">Geboortedatum</label>
                 <input type="text" id="memberSinceTextbox" class="form-control" placeholder="Vul member since in" />
             </div>
-
-            <button class="btn btn-success btn-lg btn-block" id="btnRegister">Register</button>
         </form>
+       <button class="btn btn-success btn-lg btn-block" id="btnRegister" onclick="buttonRegister();">Register</button>
     </main>
+</div>
+
+<script type="text/javascript">
+    function buttonRegister()
+    {
+        window.location = '../index.html';
+    }
+    function buttonBack()
+    {
+        window.location = '../index.html';
+    }
+</script>
 </body>
 
 </html>
