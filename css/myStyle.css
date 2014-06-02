@@ -43,7 +43,7 @@ main {
 .playerinfo {
     background-color: #7ACC29;
     border: 1px solid black;
-    width: 165px;
+    width: 185px;
     margin: 5px;
     padding: 10px;
     float:left;
@@ -53,10 +53,10 @@ main {
     clear:both;
     height: 5px;
 }
-/*
+
 #my720pxcontainer {
      width: 440px;
      border: 2px solid black;
      margin-left: auto;
      margin-right: auto;
- }*/
+ }
