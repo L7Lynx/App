@@ -1,0 +1,69 @@
+<html>
+<head>
+    <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
+    <title>Subscription</title>
+</head>
+
+<body>
+<div id="my720pxcontainer">
+    <br/>
+    <header>
+        <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
+        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <h2>Subscription</h2>
+    </header>
+
+    <main>
+        <p>Select the matches of which you want to receive notifications.</p>
+        <hr/>
+        <table class="table table-hover">
+            <thead>
+                <td>#</td>
+                <td>Date</td>
+                <td>Hometeam</td>
+                <td>Awayteam</td>
+                <td>Subscribe</td>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>#</td>
+                <td>03/08/2014</td>
+                <td>Robin</td>
+                <td>Karel</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>22/08/2014</td>
+                <td>Robin</td>
+                <td>Joeri</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>13/09/2014</td>
+                <td>Karel</td>
+                <td>Joeri</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-success btn-lg btn-block" id="buttonSubscribe" onclick="buttonSubscribe();">Subscribe</button>
+    </main>
+</div>
+
+<script type="text/javascript">
+    function buttonBack()
+    {
+        window.location = 'home.html';
+    }
+    function buttonSubscribe()
+    {
+        window.location = 'home.html';
+    }
+</script>
+</body>
+
+</html>

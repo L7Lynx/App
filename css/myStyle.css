@@ -34,3 +34,22 @@ main {
 .noBackbutton {
     margin-left: 100px;
 }
+
+#matchTime {
+    float:right;
+    clear:both;
+}
+
+.playerinfo {
+    background-color: darkgray;
+    border: 1px solid black;
+    width: 200px;
+    margin: 5px;
+    padding: 10px;
+    float:left;
+}
+
+.whitespace {
+    clear:both;
+    height: 5px;
+}

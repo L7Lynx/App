@@ -4,6 +4,6 @@
 
 function buttonClicked()
 {
-    window.location='partials/home.html';
+    window.location.href ='../partials/home.html';
     alert("hey2");
 }

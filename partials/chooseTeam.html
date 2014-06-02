@@ -2,7 +2,7 @@
 <head>
     <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
-    <title>Match Events</title>
+    <title>Team</title>
 </head>
 
 <body>
@@ -11,39 +11,33 @@
     <header>
         <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
         <div id="headerImg"><img src="../img/Football.jpg"/></div>
-        <h2>Match Event</h2>
+        <h2>Team</h2>
     </header>
 
     <main>
-        <div>
-            <label>Match date: </label> 03/06/2014 <br/>
-            <label>Teams: </label> Robin Snellinx vs Karel Stevens
-            <br/>
-        </div>
-        <br/>
-        <div id="matchTime">
-            <label>Time: </label> minut 39
-        </div>
+        <div>Choose a team to view information.</div>
+        <hr/>
         <table class="table table-hover">
             <thead>
             <td>#</td>
-            <td>Time</td>
-            <td>Player</td>
-            <td>Event</td>
+            <td>Team</td>
             </thead>
 
             <tbody>
             <tr>
                 <td>1</td>
-                <td>Minuut 4</td>
-                <td>Robin Snellinx</td>
-                <td>gevallen :p</td>
+                <td>Robin</td>
+                <td><a href="team.html">view</a></td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Minuut 24</td>
-                <td>Robin Snellinx</td>
-                <td>scoort... owngoal!</td>
+                <td>2</td>
+                <td>Karel</td>
+                <td><a href="team.html">view</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Joeri</td>
+                <td><a href="team.html">view</a></td>
             </tr>
             </tbody>
         </table>
@@ -53,9 +47,8 @@
 <script type="text/javascript">
     function buttonBack()
     {
-        window.location = 'chooseMatch.html';
+        window.location = 'home.html';
     }
-
 </script>
 </body>
 
