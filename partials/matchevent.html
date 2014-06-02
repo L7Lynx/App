@@ -1,6 +1,7 @@
 <html>
 <head>
     <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-1.9.1.js"></script>
     <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
     <title>Match Events</title>
 </head>
@@ -16,39 +17,74 @@
 
     <main>
         <div>
-            <label>Match date: </label> 03/06/2014 <br/>
-            <label>Teams: </label> Robin Snellinx vs Karel Stevens
-            <br/>
+            <div class="form-group">
+                <label class="control-label">Match date</label>
+                <div>
+                    <p class="form-control-static">03/06/2014</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Teams</label>
+                <div>
+                    <p class="form-control-static">Robin Snellinx vs Karel Stevens</p>
+                </div>
+            </div>
         </div>
-        <br/>
-        <div id="matchTime">
-            <label>Time: </label> minut 39
+        <div id="matchTimediv">
+            <label>Time: </label><span id="matchTime"> min 39</span>
         </div>
-        <table class="table table-hover">
+        <table id="table" class="table table-hover">
             <thead>
             <tr>
-                <td>#</td>
-                <td>Time</td>
-                <td>Player</td>
-                <td>Event</td>
+                <th>#</th>
+                <th>Team</th>
+                <th>Player</th>
+                <th>Event</th>
+                <th>Time</th>
             </tr>
             </thead>
-
-            <tbody>
+            <tbody id="tbody">
             <tr>
-                <td>1</td>
-                <td>Minuut 4</td>
-                <td>Robin Snellinx</td>
-                <td>gevallen :p</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Minuut 24</td>
-                <td>Robin Snellinx</td>
-                <td>scoort... owngoal!</td>
             </tr>
             </tbody>
+
         </table>
+
+<br/>
+        <hr/>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="matchevent" placeholder="searchterm">
+                </div>
+            </div>
+            <button class="btn btn-default" id="button">Zoek</button>
+
+        <!--<input id ="matchevent" value="MatchEvent">
+        <button id="button">Zoek!</button>-->
+
+        <script type="text/javascript">
+            $('#button').on('click', function () {
+                var event = $('#matchevent').val();
+
+                var url = 'http://mobapptest.eu5.org/matchEvents.php';
+                $.post(url, { matchid: event }, function (data) {
+                            var count = 1;
+                            $.each(data, function (arrayID, group) {
+                                $('#tbody tr:last').after('<tr><td>' +
+                                        count + '</td><td>' +
+                                        group.team + '</td><td>' +
+                                        group.player + '</td><td>' +
+                                        group.event + '</td><td>' +
+                                        'min ' + group.time + '</td></tr>');
+                            })
+                            count++;
+                        },
+                        'json'
+                )
+
+                $('#matchevent').val("");
+            })
+        </script>
     </main>
 </div>
 
