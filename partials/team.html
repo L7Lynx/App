@@ -11,7 +11,7 @@
     <br/>
     <header>
         <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
-        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <div id="headerImg"><img src="../img/Football.jpg" alt="football image"/></div>
         <h2>Team</h2>
     </header>
 
@@ -76,7 +76,11 @@
 
     $(document).ready(function()
     {
-        var event = 1;
+        var queryDict = {}
+        location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+
+        var event = queryDict.id;
+
         var url = 'http://mobapptest.eu5.org/teams.php';
         $.post(url, { id: event }, function (data) {
                 $.each(data, function (arrayID, group) {

@@ -11,7 +11,7 @@
     <br/>
     <header>
         <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
-        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <div id="headerImg"><img src="../img/Football.jpg" alt="football image"/></div>
         <h2>Team</h2>
     </header>
 
@@ -20,13 +20,15 @@
         <hr/>
         <table class="table table-hover">
             <thead>
-            <td>#</td>
-            <td>Team</td>
-            <td>Country</td>
-            <td>Competition</td>
-            <td></td>
+                <tr>
+                <th>#</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Competition</th>
+                <th></th>
+                </tr>
             </thead>
-
+            
             <tbody id="tbody">
             <tr>
             </tr>
@@ -46,12 +48,22 @@
                         group.team + '</td><td>' +
                         group.country + '</td><td>' +
                         group.competition + '</td><td>' +
+<<<<<<< HEAD
                         '<a href="team.html">view</a></td></tr>');
                 });
                 count++;
             },
             'json'
         );
+=======
+                        '<a href="team.html?id=' + group.id + '">View</td></tr>');
+                        count++;
+                    })
+            },
+            'json'
+        );
+        $('#matchevent').val("");
+>>>>>>> 3b844ed6c206ea5bae43a75e79dac58c6aa3aa29
     });
 </script>
 <script type="text/javascript">
