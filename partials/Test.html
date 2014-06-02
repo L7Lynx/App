@@ -4,17 +4,20 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <script src="../js/jquery-1.9.1.js"></script>
+        <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <table id="table">
-            <tr>
-                <th>id</th>
-                <th>matchid</th>
-                <th>teamplayersid</th>
-                <th>eventid</th>
-                <th>time</th>
-            </tr>
+    <div id="my720pxcontainer">
+        <table id="table" class="table table-hover">
+            <thead>
+                <td>id</td>
+                <td>matchid</td>
+                <td>teamplayersid</td>
+                <td>eventid</td>
+                <td>time</td>
+            </thead>
         </table>
         <input id ="matchevent" value="MatchEvent">
         <button id="button">Zoek!</button>
@@ -38,5 +41,6 @@
                 )
            })
         </script>
+    </div>
     </body>
 </html>
