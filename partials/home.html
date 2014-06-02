@@ -9,15 +9,15 @@
 <div id="my720pxcontainer">
     <br/>
     <header>
-        <div class="backbutton"><a href="../index.html"> <button class="btn btn-default" id="homebackbtn" >Log Out</button></a></div>
+        <div class="backbutton"><a href="../index.html"> <button class="btn btn-default" id="homebackbtn" >Log out</button></a></div>
         <div id="headerImg"><img src="../img/Football.jpg"/></div>
         <h2>Home</h2>
     </header>
 
     <main>
-       <button class="btn btn-success btn-lg btn-block" onclick="buttonMatchEvents();">Match</button>
+       <button type="submit" class="btn btn-success btn-lg btn-block" onclick="buttonMatchEvents();">Follow match</button>
        <button type="submit" class="btn btn-success btn-lg btn-block" onclick="buttonSubscribe();">Subscribe</button>
-       <button type="submit" class="btn btn-success btn-lg btn-block" onclick="buttonTeam();">Team</button>
+       <button type="submit" class="btn btn-success btn-lg btn-block" onclick="buttonTeam();">View team</button>
     </main>
     </div>
 
@@ -32,7 +32,7 @@
     }
     function buttonTeam()
     {
-        window.location = 'team.html';
+        window.location = 'chooseTeam.html';
     }
 </script>
 </body>
