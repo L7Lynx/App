@@ -3,8 +3,10 @@
     width: 446.4px;
     margin-right: auto;
     margin-left: auto;
+    border: 1px solid black;
+    padding:5px;
 }
 
 h2 {
-    text-align:center;
+   text-align:center;
 }
