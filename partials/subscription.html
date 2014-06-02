@@ -19,35 +19,26 @@
         <hr/>
         <table class="table table-hover">
             <thead>
-                <td>#</td>
-                <td>Date</td>
-                <td>Hometeam</td>
-                <td>Awayteam</td>
-                <td>Subscribe</td>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Hometeam</th>
+                <th>Awayteam</th>
+                <th>Score</th>
+                <th>Subscribe</th>
+            </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tbody">
             <tr>
-                <td>#</td>
-                <td>03/08/2014</td>
-                <td>Robin</td>
-                <td>Karel</td>
-                <td><input type="checkbox" /></td>
             </tr>
-            <tr>
-                <td>#</td>
-                <td>22/08/2014</td>
-                <td>Robin</td>
-                <td>Joeri</td>
-                <td><input type="checkbox" /></td>
-            </tr>
-            <tr>
+           <!-- <tr>
                 <td>#</td>
                 <td>13/09/2014</td>
                 <td>Karel</td>
                 <td>Joeri</td>
                 <td><input type="checkbox" /></td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
         <button class="btn btn-success btn-lg btn-block" id="buttonSubscribe" onclick="buttonSubscribe();">Subscribe</button>
@@ -55,6 +46,29 @@
 </div>
 
 <script type="text/javascript">
+    $(document).ready(function()
+    {
+        alert("hey");
+        var url = 'http://mobapptest.eu5.org/matches.php';
+        $.post(url, function (data) {
+                var count = 1;
+                $.each(data, function (arrayID, group) {
+                    $('#tbody tr:last').after('<tr><td>' +
+                            count + '</td><td>' +
+                            group.date + '</td><td>' +
+                            group.hometeam + '</td><td>' +
+                            group.awayteam + '</td><td>' +
+                            group.scorehome + ' - ' + group.scoreaway + '</td><td>' +
+                            '<input type="checkbox" /></td></tr>');
+                });
+                count++;
+            },
+            'json'
+        );
+
+        $('#matchevent').val("");
+    });
+
     function buttonBack()
     {
         window.location = 'home.html';
