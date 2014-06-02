@@ -20,6 +20,10 @@
                     <th>Time</th>
                 </tr>
             </thead>
+            <tbody id="tbody">
+                <tr>
+                </tr>
+            </tbody>
         </table>
         <input id ="matchevent" value="MatchEvent">
         <button id="button">Zoek!</button>
@@ -33,7 +37,7 @@
                 $.post(url, { id: event }, function (data) {
                     var count = 1;
                     $.each(data, function (arrayID, group) {
-                        $('#table tr:last').after('<tr><td>' +
+                        $('#tbody tr:last').after('<tr><td>' +
                          count + '</td><td>' +
                          group.team + '</td><td>' +
                          group.player + '</td><td>' +
