@@ -55,8 +55,8 @@ main {
 }
 
 #my720pxcontainer {
-    width: 440px;
-    border: 2px solid black;
-    margin-left: auto;
-    margin-right: auto;
-}
+     width: 440px;
+     border: 2px solid black;
+     margin-left: auto;
+     margin-right: auto;
+ }
