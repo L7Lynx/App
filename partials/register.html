@@ -1,0 +1,50 @@
+<html>
+<head>
+    <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
+    <title>Register</title>
+</head>
+
+<body>
+<div id="my720pxcontainer">
+    <br/>
+    <header>
+        <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
+        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <h2>Register</h2>
+    </header>
+
+    <main>
+        <form class="form" id="registration">
+               <div class="form-group">
+                <label for="naamTextbox">Naam</label>
+                <input type="text" id="naamTextbox" class="form-control" placeholder="Vul naam in" />
+            </div>
+
+            <div class="form-group">
+                <label for="voornaamTextbox">Grootte</label>
+                <input type="text" id="voornaamTextbox" class="form-control"  placeholder="Vul groote in" />
+            </div>
+
+            <div class="form-group">
+                <label for="memberSinceTextbox">Geboortedatum</label>
+                <input type="text" id="memberSinceTextbox" class="form-control" placeholder="Vul member since in" />
+            </div>
+        </form>
+       <button class="btn btn-success btn-lg btn-block" id="btnRegister" onclick="buttonRegister();">Register</button>
+    </main>
+</div>
+
+<script type="text/javascript">
+    function buttonRegister()
+    {
+        window.location = '../index.html';
+    }
+    function buttonBack()
+    {
+        window.location = '../index.html';
+    }
+</script>
+</body>
+
+</html>
