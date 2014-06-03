@@ -33,6 +33,7 @@
         <div id="matchTimediv">
             <label>Time: </label><span id="matchTime"> min 39</span>
         </div>
+        <p id="test">test</p>
         <table id="table" class="table table-hover">
             <thead>
             <tr>
@@ -50,21 +51,15 @@
 
         </table>
 
-<br/>
-        <hr/>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="matchevent" placeholder="searchterm">
-                </div>
-            </div>
-            <button class="btn btn-default" id="button">Zoek</button>
-
-        <!--<input id ="matchevent" value="MatchEvent">
-        <button id="button">Zoek!</button>-->
-
         <script type="text/javascript">
-            $('#button').on('click', function () {
-                var event = $('#matchevent').val();
+
+            $(document).ready(function()
+            {
+                var queryDict = {};
+                 location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+
+                 var event = queryDict.id;
+                 $('#test').text(event);
 
                 var url = 'http://mobapptest.eu5.org/matchEvents.php';
                 $.post(url, { matchid: event }, function (data) {
@@ -76,13 +71,13 @@
                                         group.player + '</td><td>' +
                                         group.event + '</td><td>' +
                                         'min ' + group.time + '</td></tr>');
-                            })
-                            count++;
+                                count++;
+                            });
+
+                            $('#test').val(count);
                         },
                         'json'
                 )
-
-                $('#matchevent').val("");
             })
         </script>
     </main>
