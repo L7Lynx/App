@@ -16,27 +16,41 @@
     </header>
 
     <main>
-        <div>
-            <div class="form-group">
+        <form class="form-inline" role="form">
+            <div class="col-sm-4 form-group">
                 <label class="control-label">Match date</label>
                 <div>
-                    <p class="form-control-static">03/06/2014</p>
+                    <p class="form-control-static" id="matchdate"></p>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Match time</label>
+                <div>
+                    <p class="form-control-static" id="matchTime"> min 39</p>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Score</label>
+                <div>
+                    <p class="form-control-static" id="matchscore"></p>
+                </div>
+            </div>
+            <br/>
+
+            <div class="whitespace"></div>
+            <div class="col-sm-8 form-group">
                 <label class="control-label">Teams</label>
                 <div>
-                    <p class="form-control-static">Robin Snellinx vs Karel Stevens</p>
+                    <p class="form-control-static" id="matchteams"></p>
                 </div>
             </div>
-        </div>
-        <div id="matchTimediv">
-            <label>Time: </label><span id="matchTime"> min 39</span>
-        </div>
-        <p id="test">test</p>
+        </form>
+        <div class="whitespace"></div>
+<hr/>
         <table id="table" class="table table-hover">
             <thead>
             <tr>
+                <th></th>
                 <th>#</th>
                 <th>Team</th>
                 <th>Player</th>
@@ -56,29 +70,67 @@
             $(document).ready(function()
             {
                 var queryDict = {};
-                 location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+                location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+                var event = queryDict.id;
 
-                 var event = queryDict.id;
-                 $('#test').text(event);
+
+                var url = 'http://mobapptest.eu5.org/matches.php';
+                $.post(url, { id: event }, function (data) {
+                            $.each(data, function (arrayID, group) {
+                                $('#matchdate').text(group.date);
+                                $('#matchteams').text(group.hometeam + ' vs ' + group.awayteam);
+                                $('#matchscore').text(group.scorehome + ' - ' + group.scoreaway);
+                            })
+                        },
+                        'json'
+                );
+
+                url = 'http://mobapptest.eu5.org/matchEvents.php';
+                $.post(url, { matchid: event }, function (data) {
+                            var count = 0;
+                            $.each(data, function (arrayID, group) {
+                                count++;
+                                $('#tbody tr:last').after('<tr class="row"><td class="field">' +
+                                        count + '</td><td class="field">' +
+                                        group.team + '</td><td class="field">' +
+                                        group.player + '</td><td class="field">' +
+                                        group.event + '</td><td class="field">' +
+                                        'min ' + group.time + '</td></tr>');
+                                $('#test').text(count);
+                            });
+                        },
+                        'json'
+                );
+
+            });
+
+            var refresher = setInterval(function() {
+
+                var elmtTable = document.getElementById('tbody');
+                var tableRows = elmtTable.getElementsByClassName('row');
+                var rowCount = tableRows.length;
+
+                for (var x=rowCount-1; x>=0; x--) {
+                    elmtTable.removeChild(tableRows[x]);
+                }
 
                 var url = 'http://mobapptest.eu5.org/matchEvents.php';
                 $.post(url, { matchid: event }, function (data) {
                             var count = 1;
                             $.each(data, function (arrayID, group) {
-                                $('#tbody tr:last').after('<tr><td>' +
-                                        count + '</td><td>' +
-                                        group.team + '</td><td>' +
-                                        group.player + '</td><td>' +
-                                        group.event + '</td><td>' +
+                                $('#tbody tr:last').after('<tr class="row"><td class="field">' +
+                                        count + '</td><td class="field">' +
+                                        group.team + '</td><td class="field">' +
+                                        group.player + '</td><td class="field">' +
+                                        group.event + '</td><td class="field">' +
                                         'min ' + group.time + '</td></tr>');
                                 count++;
                             });
-
                             $('#test').val(count);
                         },
                         'json'
                 )
-            })
+            }, 30000);
         </script>
     </main>
 </div>

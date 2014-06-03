@@ -35,11 +35,6 @@ main {
     margin-left: 100px;
 }
 
-#matchTimediv {
-    float:right;
-    clear:both;
-}
-
 .playerinfo {
     background-color: #7ACC29;
     border: 1px solid black;
