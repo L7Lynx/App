@@ -46,7 +46,6 @@
                 <input type="text" id="genderTextbox" class="form-control" placeholder="fill in your gender" />
             </div>
         </form>
-        <div id="testdiv">Hier moet de query komen te staan.</div>
        <button class="btn btn-success btn-lg btn-block" id="btnRegister" onclick="buttonRegister();">Register</button>
     </main>
 </div>
@@ -66,7 +65,7 @@
                 email: email, password: password, birthdate: birthdate, gender: gender
             },
              function (data) {
-                 $("#testdiv").text(data);
+                 window.location = 'home.html';
              }
                  )
         }
@@ -87,10 +86,10 @@
             errors += 'Please enter an email address.<br>';
         }
         else {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            /*var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (!re.test($("#lastnameTextbox").val())) {
                 errors += 'Not a valid email address.<br>';
-            }
+            }*/
         }
         if ($("#passwordTextbox").val() == '' || $("#confpasswordTextbox").val() == '') {
             errors += 'Please enter a password and password confirmation.<br>';

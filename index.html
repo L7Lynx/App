@@ -43,13 +43,14 @@
          var url = 'http://mobapptest.eu5.org/login.php';
          $.post(url, { email: email, password: password },
             function (data) {
-                if (data == '[]') {
+                if (data == undefined || data == null || data.length == 0){
                     $("#testdiv").html('The login credentials you provided are unknown.<br>Please try again.');
                 }
                 else{
-                    window.location = 'partials/home.html'; 
+                    window.location = 'partials/home.html?userid='+data[0].id; 
                 }
-            }
+            },
+            'json'
         )
      }
      function buttonRegister() {
