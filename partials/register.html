@@ -2,6 +2,7 @@
 <head>
     <LINK href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <LINK href="../css/myStyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-1.9.1.js"></script>
     <title>Register</title>
 </head>
 
@@ -10,11 +11,11 @@
     <br/>
     <header>
         <div class="backbutton"><button class="btn btn-default" id="homebackbtn" onclick="buttonBack();">Back</button></div>
-        <div id="headerImg"><img src="../img/Football.jpg"/></div>
+        <div id="headerImg"><img src="../img/Football.jpg" alt="football image"/></div>
         <h2>Register</h2>
     </header>
-
     <main>
+        <div id="regErrors"></div>
         <form class="form" id="registration">
             <div class="form-group">
                 <label for="lastnameTextbox">Lastname</label>
@@ -26,37 +27,89 @@
             </div>
             <div class="form-group">
                 <label for="emailTextbox">Email</label>
-                <input type="text" id="emailTextbox" class="form-control" placeholder="fill in your email address" />
+                <input type="email" id="emailTextbox" class="form-control" placeholder="fill in your email address" />
             </div>
             <div class="form-group">
                 <label for="passwordTextbox">Password</label>
-                <input type="text" id="passwordTextbox" class="form-control" placeholder="fill in your password" />
+                <input type="password" id="passwordTextbox" class="form-control" placeholder="fill in your password" />
             </div>
             <div class="form-group">
-                <label for="passwordTextbox">Confirm Password</label>
-                <input type="text" id="passwordTextbox" class="form-control" placeholder="confirm password" />
+                <label for="confpasswordTextbox">Confirm Password</label>
+                <input type="password" id="confpasswordTextbox" class="form-control" placeholder="confirm password" />
             </div>
             <div class="form-group">
                 <label for="birthdayTextbox">Date of birth</label>
-                <input type="text" id="birthdayTextbox" class="form-control" placeholder="fill in your birthday" />
+                <input type="date" id="birthdayTextbox" class="form-control" placeholder="fill in your birthday" />
             </div>
             <div class="form-group">
                 <label for="genderTextbox">Gender</label>
                 <input type="text" id="genderTextbox" class="form-control" placeholder="fill in your gender" />
             </div>
         </form>
+        <div id="testdiv">Hier moet de query komen te staan.</div>
        <button class="btn btn-success btn-lg btn-block" id="btnRegister" onclick="buttonRegister();">Register</button>
     </main>
 </div>
 
 <script type="text/javascript">
-    function buttonRegister()
-    {
+    function buttonRegister() {
+        if (validateInputs()) {
+            var lastname = $("#lastnameTextbox").val();
+            var firstname = $("#firstnameTextbox").val();
+            var email = $("#emailTextbox").val();
+            var password = $("#passwordTextbox").val();
+            var birthdate = $("#birthdayTextbox").val();
+            var gender = $("#genderTextbox").val();
+
+            var url = 'http://mobapptest.eu5.org/register.php';
+            $.post(url, { lastname: lastname, firstname: firstname,
+                email: email, password: password, birthdate: birthdate, gender: gender
+            },
+             function (data) {
+                 $("#testdiv").text(data);
+             }
+                 )
+        }
+    }
+    function buttonBack() {
         window.location = '../index.html';
     }
-    function buttonBack()
-    {
-        window.location = '../index.html';
+    function validateInputs() {
+        var errors = '';
+
+        if ($("#lastnameTextbox").val() == '') {
+            errors += 'Please enter a last name.<br>';
+        }
+        if ($("#firstnameTextbox").val() == '') {
+            errors += 'Please enter a first name.<br>';
+        }
+        if ($("#emailTextbox").val() == '') {
+            errors += 'Please enter an email address.<br>';
+        }
+        else {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!re.test($("#lastnameTextbox").val())) {
+                errors += 'Not a valid email address.<br>';
+            }
+        }
+        if ($("#passwordTextbox").val() == '' || $("#confpasswordTextbox").val() == '') {
+            errors += 'Please enter a password and password confirmation.<br>';
+        }
+        else {
+            if ($("#passwordTextbox").val() != $("#confpasswordTextbox").val()) {
+                errors += 'Please make sure the password and password confirmation match.<br>';
+            }
+        }
+        if ($("#genderTextbox").val() != 'M' && $("#genderTextbox").val() != 'F') {
+            errors += 'Please enter M or F for gender.<br>';
+        }
+
+        if (errors == '') {
+            return true;
+        } else {
+            $("#regErrors").html(errors);
+            return false;
+        }
     }
 </script>
 </body>

@@ -2,6 +2,7 @@
 <head>
  <LINK href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
  <LINK href="css/myStyle.css" rel="stylesheet" type="text/css">
+ <script src="js/jquery-1.9.1.js"></script>
  <title>Login</title>
 
  </head>
@@ -10,7 +11,7 @@
  <div id="my720pxcontainer">
      <br/>
      <header>
-         <div id="headerImg"><img src="img/Football.jpg"/></div>
+         <div id="headerImg"><img src="img/Football.jpg" alt="football image"/></div>
          <div class="noBackbutton"><h2>Inlogpagina</h2></div>
      </header>
 
@@ -26,6 +27,7 @@
           </div>
 
          </form>
+         <div id="testdiv"></div>
          <button class="btn btn-success btn-lg btn-block" id="loginbtn" onclick="buttonLogin();">Log in</button>
          <button class="btn btn-default btn-lg btn-block" id="loginbtn3" onclick="buttonRegister();">Register</button>
      </main>
@@ -34,14 +36,26 @@
 
 
  <script type="text/javascript">
-     function buttonLogin()
-     {
-         window.location = 'partials/home.html';
+     function buttonLogin() {
+         var email = $("#InputEmail").val();
+         var password = $("#InputPassword").val();
+
+         var url = 'http://mobapptest.eu5.org/login.php';
+         $.post(url, { email: email, password: password },
+            function (data) {
+                if (data == '[]') {
+                    $("#testdiv").html('The login credentials you provided are unknown.<br>Please try again.');
+                }
+                else{
+                    window.location = 'partials/home.html'; 
+                }
+            }
+        )
      }
-     function buttonRegister()
-     {
+     function buttonRegister() {
          window.location = 'partials/register.html';
      }
+
  </script>
  </body>
 </html>
