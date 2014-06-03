@@ -49,8 +49,9 @@
         var url = 'http://mobapptest.eu5.org/matches.php';
         $.post(url, function (data) {
 
-                    var count = 1;
+                    var count = 0;
                     $.each(data, function (arrayID, group) {
+                        count++;
                         $('#tbody tr:last').after('<tr><td>' +
                                 count + '</td><td>' +
                                 group.date + '</td><td>' +
@@ -59,12 +60,10 @@
                                 group.scorehome + ' - ' + group.scoreaway + '</td><td>' +
                                 '<a href="matchevent.html?id='+group.id+'">watch</a></td></tr>');
                     });
-                    count++;
+
                 },
                 'json'
         );
-
-        $('#matchevent').val("");
     });
 
     function buttonBack()

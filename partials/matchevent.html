@@ -73,7 +73,6 @@
                 location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
                 var event = queryDict.id;
 
-
                 var url = 'http://mobapptest.eu5.org/matches.php';
                 $.post(url, { id: event }, function (data) {
                             $.each(data, function (arrayID, group) {
@@ -105,6 +104,9 @@
             });
 
             var refresher = setInterval(function() {
+                var queryDict = {};
+                location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+                var event = queryDict.id;
 
                 var elmtTable = document.getElementById('tbody');
                 var tableRows = elmtTable.getElementsByClassName('row');
@@ -116,21 +118,21 @@
 
                 var url = 'http://mobapptest.eu5.org/matchEvents.php';
                 $.post(url, { matchid: event }, function (data) {
-                            var count = 1;
+                            var count = 0;
                             $.each(data, function (arrayID, group) {
+                                count++;
                                 $('#tbody tr:last').after('<tr class="row"><td class="field">' +
                                         count + '</td><td class="field">' +
                                         group.team + '</td><td class="field">' +
                                         group.player + '</td><td class="field">' +
                                         group.event + '</td><td class="field">' +
                                         'min ' + group.time + '</td></tr>');
-                                count++;
+                                $('#test').text(count);
                             });
-                            $('#test').val(count);
                         },
                         'json'
-                )
-            }, 30000);
+                );
+            }, 15000);
         </script>
     </main>
 </div>
